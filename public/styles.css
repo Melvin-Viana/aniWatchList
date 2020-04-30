@@ -1,0 +1,41 @@
+@font-face{
+  font-family:"Baloo";
+  src: url('./BalooTammudu2-Bold.ttf');
+}
+
+/* ==========================
+
+  GENERAL CSS
+*/
+body{
+  background-color: aliceblue;
+}
+h1{
+  font-family: 'Ballo', sans-serif;
+  font-weight:800;
+  color:#4834d4;
+  text-align: center;
+  margin-top:100px;
+}
+h2 {
+  color: #535c68;
+}
+
+a {
+  text-decoration: none;
+  color: #B5FFE9;
+  transition: all ease-in .1s;
+}
+a:hover{
+  color: white;
+}
+/* ====================== */
+.popular-anime-container {
+  margin-top: 50px;
+}
+
+.navbar{
+  position: fixed;
+  top: 0;
+  width: 100%
+}
