@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const renderView = require('./renderView.js');
-const {authenticateUser} = require('../db/controllers/User.js');
+const {authenticateUser,createUser} = require('../db/controllers/User.js');
 app.use(cors());
 app.use(bodyParser.json()); //utilizes the body-parser package
 app.use(express.static(__dirname + '/../public'));
@@ -16,9 +16,7 @@ app.get('/watchlist');
 
 app.post('/login', authenticateUser);
 
-app.post('/signup',(req,res) => {
-
-});
+app.post('/signup', createUser);
 
 app.listen(3000 || process.ENV.PORT,()=> {
   console.log('Listening on port 3000')

@@ -17,7 +17,17 @@ const Login = (props) => {
       .catch(err=>{
         alert("User data not found");
       })
-  }
+  };
+
+  const handleSignUp = () => {
+    axios.post("/signup",{username,password})
+      .then(res=>{
+        if(res.data.err) {
+          alert('User exists in DB');
+        }
+        // window.location.href = res.data.redirect;
+      });
+  };
   return (
   <React.Fragment>
       <Paper square>
@@ -57,7 +67,7 @@ const Login = (props) => {
         onChange={(e)=>setPassword(e.target.value)}
         value={password}
         />    <FormHelperText id="password">Enter Password</FormHelperText>
-    {(currentForm === "login")? <Button onClick={handleLogin}>Login</Button>: <Button>SignUp</Button>}
+    {(currentForm === "login")? <Button onClick={handleLogin}>Login</Button>: <Button onClick={handleSignUp}>SignUp</Button>}
 </FormControl>
 </Paper>
 
