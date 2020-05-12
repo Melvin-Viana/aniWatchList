@@ -12,10 +12,14 @@ const Login = (props) => {
   const handleLogin = () => {
     axios.post("/login",{username,password})
       .then(res=>{
+        console.log(res.data)
+        if(res.data.err) {
+          throw new Error(res.data.err)
+        }
         window.location.href = res.data.redirect;
       })
-      .catch(err=>{
-        alert("User data not found");
+      .catch((err)=>{
+        alert(err);
       })
   };
 

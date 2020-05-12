@@ -18,18 +18,21 @@ module.exports.createUser = (req,res) => {
 }
 
 module.exports.authenticateUser = (req,res) => {
-  console.log(req.body);
-  User.find(req.body)
+  const {password, username } = req.body;
+  console.log(password);
+    User.find({username})
     .exec()
-    .then(data=>{
-      if(data.length!==0) {
-        res.send({redirect:'http://localhost:3000/'});
-      } else {
-        throw new Error('User does not exist')
-      }
+    .then(async data=> {
+        if(data.length!==0) {
+          let doesPasswordMatch = await bcrypt.compareSync(password, data[0].password);
+          if (doesPasswordMatch) {
+            // res.send({redirect:'http://localhost:3000/'});
+          } else {
+            res.send({err: 'Password does not match'}).status(500)
+          }
+        } else {
+          res.send({err: 'User does not exist'}).status(400);
+        }
     })
-    .catch(err=>{
-      res.status(500);
-      throw new Error(err)
-    });
-}
+
+};
