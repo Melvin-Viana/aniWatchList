@@ -30,7 +30,7 @@
     "express-session": "^1.17.1",
     "jikanjs": "^0.7.0",
     "mongoose": "^5.9.10",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
